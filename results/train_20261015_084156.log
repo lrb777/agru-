@@ -1,0 +1,223 @@
+2026-10-15 08:41:56,800 [INFO] root: 日志文件: D:\agru择时\results\train_20261015_084156.log
+2026-10-15 08:41:56,801 [INFO] root: ======================================================================
+2026-10-15 08:41:56,802 [INFO] root: AGRU 神经网络大盘择时 - 全量训练
+2026-10-15 08:41:56,802 [INFO] root: ======================================================================
+2026-10-15 08:43:15,313 [INFO] root: 启动滚动训练...
+2026-10-15 08:43:21,328 [INFO] src.train:   设备: cpu
+2026-10-15 08:43:21,328 [INFO] src.train:   特征数: 40
+2026-10-15 08:43:21,329 [INFO] src.train:   股票数: 5,343
+2026-10-15 08:43:21,329 [INFO] src.train:   总行数: 9,563,724
+2026-10-15 08:43:21,329 [INFO] src.train:   滚动折: [2020, 2021, 2022, 2023, 2024, 2025]
+2026-10-15 08:43:21,330 [INFO] src.train:   训练参数: batch=12000, epochs=100, lr=0.001, patience=10, grad_clip=1.0
+2026-10-15 08:43:21,393 [INFO] src.train:   内存占用: 7855 MB
+2026-10-15 08:43:21,393 [INFO] src.train: 
+2026-10-15 08:43:21,394 [INFO] src.train: ======================================================================
+2026-10-15 08:43:21,394 [INFO] src.train:   滚动训练: 测试年 = 2020
+2026-10-15 08:43:21,394 [INFO] src.train: ======================================================================
+2026-10-15 08:43:21,395 [INFO] src.train:   区间: train=2015-2017, val=2018-2019, test=2020
+2026-10-15 08:43:21,395 [INFO] src.train:   内存占用 (折开始): 7855 MB
+2026-10-15 08:43:34,000 [INFO] src.train:   内存占用 (标准化后): 10959 MB
+2026-10-15 08:43:34,001 [INFO] src.train:   构建共享数据存储 (全股票池, 2015-2020)...
+2026-10-15 08:43:56,036 [INFO] src.train:   数据存储构建完成: 5,343 只股票, 22.0s
+2026-10-15 08:43:56,036 [INFO] src.train:   内存占用 (store构建后): 9497 MB
+2026-10-15 08:43:56,036 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-15 08:46:39,161 [INFO] src.train:   样本量: train=1,763,184, val=1,611,369, test=857,936
+2026-10-15 08:46:39,227 [INFO] src.train:   模型参数量: 69,251
+2026-10-15 08:57:15,402 [INFO] src.train:   Epoch   1/100 | loss=1.0311 | IC=0.0221 | train=477s val=154s | total=631s | mem=15391MB
+2026-10-15 08:57:15,404 [INFO] src.train:     ^ new best IC=0.0221
+2026-10-15 09:08:32,369 [INFO] src.train:   Epoch   2/100 | loss=0.9943 | IC=0.0363 | train=500s val=177s | total=1308s | mem=13511MB
+2026-10-15 09:08:32,371 [INFO] src.train:     ^ new best IC=0.0363
+2026-10-15 09:19:45,469 [INFO] src.train:   Epoch   3/100 | loss=0.9812 | IC=0.0480 | train=504s val=169s | total=1981s | mem=6097MB
+2026-10-15 09:19:45,471 [INFO] src.train:     ^ new best IC=0.0480
+2026-10-15 09:30:57,573 [INFO] src.train:   Epoch   4/100 | loss=0.9641 | IC=0.0740 | train=504s val=168s | total=2654s | mem=6264MB
+2026-10-15 09:30:57,574 [INFO] src.train:     ^ new best IC=0.0740
+2026-10-15 09:34:54,406 [ERROR] src.train:   !! 错误: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9216000 bytes.
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 160, in _train_one_fold
+    best_ic = self._train_model(model, train_ds, val_ds, test_year)
+  File "D:\agru择时\src\train.py", line 222, in _train_model
+    logits = model(xb)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\torch\nn\modules\module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\torch\nn\modules\module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\agru择时\src\model.py", line 63, in forward
+    gru_out, _ = self.gru(encoded)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\torch\nn\modules\module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\torch\nn\modules\module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\torch\nn\modules\rnn.py", line 1394, in forward
+    result = _VF.gru(
+RuntimeError: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9216000 bytes.
+2026-10-15 09:34:59,800 [INFO] src.train:   内存占用: 5435 MB
+2026-10-15 09:34:59,801 [INFO] src.train: 
+2026-10-15 09:34:59,801 [INFO] src.train: ======================================================================
+2026-10-15 09:34:59,801 [INFO] src.train:   滚动训练: 测试年 = 2021
+2026-10-15 09:34:59,801 [INFO] src.train: ======================================================================
+2026-10-15 09:34:59,802 [INFO] src.train:   区间: train=2015-2018, val=2019-2020, test=2021
+2026-10-15 09:34:59,802 [INFO] src.train:   内存占用 (折开始): 5435 MB
+2026-10-15 09:35:04,471 [ERROR] src.train:   !! 错误: Unable to allocate 2.85 GiB for an array with shape (40, 9563724) and data type float64
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 125, in _train_one_fold
+    feat_std = self.fm.apply_standardizer(feat, stats)
+  File "D:\agru择时\src\features.py", line 29, in apply_standardizer
+    df = df.copy()
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 6833, in copy
+    data = self._mgr.copy(deep=deep)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 612, in copy
+    res = self.apply("copy", deep=deep)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\blocks.py", line 822, in copy
+    values = values.copy()
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.85 GiB for an array with shape (40, 9563724) and data type float64
+2026-10-15 09:35:04,647 [INFO] src.train:   内存占用: 6363 MB
+2026-10-15 09:35:04,647 [INFO] src.train: 
+2026-10-15 09:35:04,647 [INFO] src.train: ======================================================================
+2026-10-15 09:35:04,648 [INFO] src.train:   滚动训练: 测试年 = 2022
+2026-10-15 09:35:04,648 [INFO] src.train: ======================================================================
+2026-10-15 09:35:04,649 [INFO] src.train:   区间: train=2015-2019, val=2020-2021, test=2022
+2026-10-15 09:35:04,649 [INFO] src.train:   内存占用 (折开始): 6363 MB
+2026-10-15 09:35:05,611 [ERROR] src.train:   !! 错误: Unable to allocate 26.3 MiB for an array with shape (3443664,) and data type float64
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 123, in _train_one_fold
+    stats = self.fm.fit_standardizer(feat.loc[train_mask])
+  File "D:\agru择时\src\features.py", line 21, in fit_standardizer
+    stats[col] = {"mean": float(s.mean()), "std": float(s.std())}
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\series.py", line 6613, in std
+    return NDFrame.std(self, axis, skipna, ddof, numeric_only, **kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 12423, in std
+    return self._stat_function_ddof(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 12387, in _stat_function_ddof
+    return self._reduce(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\series.py", line 6478, in _reduce
+    return op(delegate, skipna=skipna, **kwds)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\nanops.py", line 147, in f
+    result = alt(values, axis=axis, skipna=skipna, **kwds)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\nanops.py", line 950, in nanstd
+    result = np.sqrt(nanvar(values, axis=axis, skipna=skipna, ddof=ddof, mask=mask))
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\nanops.py", line 85, in _f
+    return f(*args, **kwargs)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\nanops.py", line 147, in f
+    result = alt(values, axis=axis, skipna=skipna, **kwds)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\nanops.py", line 1016, in nanvar
+    sqr = _ensure_numeric((avg - values) ** 2)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 26.3 MiB for an array with shape (3443664,) and data type float64
+2026-10-15 09:35:05,869 [INFO] src.train:   内存占用: 6626 MB
+2026-10-15 09:35:05,869 [INFO] src.train: 
+2026-10-15 09:35:05,869 [INFO] src.train: ======================================================================
+2026-10-15 09:35:05,870 [INFO] src.train:   滚动训练: 测试年 = 2023
+2026-10-15 09:35:05,870 [INFO] src.train: ======================================================================
+2026-10-15 09:35:05,870 [INFO] src.train:   区间: train=2015-2020, val=2021-2022, test=2023
+2026-10-15 09:35:05,871 [INFO] src.train:   内存占用 (折开始): 6626 MB
+2026-10-15 09:35:06,030 [ERROR] src.train:   !! 错误: Unable to allocate 1.28 GiB for an array with shape (40, 4306442) and data type float64
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 123, in _train_one_fold
+    stats = self.fm.fit_standardizer(feat.loc[train_mask])
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1414, in _getitem_axis
+    return self._getbool_axis(key, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1212, in _getbool_axis
+    return self.obj._take_with_is_copy(inds, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4175, in _take_with_is_copy
+    result = self.take(indices=indices, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4155, in take
+    new_data = self._mgr.take(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 913, in take
+    return self.reindex_indexer(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 706, in reindex_indexer
+    new_blocks = [
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 707, in <listcomp>
+    blk.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\blocks.py", line 1373, in take_nd
+    new_values = algos.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 117, in take_nd
+    return _take_nd_ndarray(arr, indexer, axis, fill_value, allow_fill)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 157, in _take_nd_ndarray
+    out = np.empty(out_shape, dtype=dtype)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.28 GiB for an array with shape (40, 4306442) and data type float64
+2026-10-15 09:35:06,192 [INFO] src.train:   内存占用: 6626 MB
+2026-10-15 09:35:06,193 [INFO] src.train: 
+2026-10-15 09:35:06,193 [INFO] src.train: ======================================================================
+2026-10-15 09:35:06,194 [INFO] src.train:   滚动训练: 测试年 = 2024
+2026-10-15 09:35:06,194 [INFO] src.train: ======================================================================
+2026-10-15 09:35:06,195 [INFO] src.train:   区间: train=2015-2021, val=2022-2023, test=2024
+2026-10-15 09:35:06,195 [INFO] src.train:   内存占用 (折开始): 6626 MB
+2026-10-15 09:35:06,403 [ERROR] src.train:   !! 错误: Unable to allocate 1.57 GiB for an array with shape (40, 5260142) and data type float64
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 123, in _train_one_fold
+    stats = self.fm.fit_standardizer(feat.loc[train_mask])
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1414, in _getitem_axis
+    return self._getbool_axis(key, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1212, in _getbool_axis
+    return self.obj._take_with_is_copy(inds, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4175, in _take_with_is_copy
+    result = self.take(indices=indices, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4155, in take
+    new_data = self._mgr.take(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 913, in take
+    return self.reindex_indexer(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 706, in reindex_indexer
+    new_blocks = [
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 707, in <listcomp>
+    blk.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\blocks.py", line 1373, in take_nd
+    new_values = algos.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 117, in take_nd
+    return _take_nd_ndarray(arr, indexer, axis, fill_value, allow_fill)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 157, in _take_nd_ndarray
+    out = np.empty(out_shape, dtype=dtype)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.57 GiB for an array with shape (40, 5260142) and data type float64
+2026-10-15 09:35:06,543 [INFO] src.train:   内存占用: 6626 MB
+2026-10-15 09:35:06,543 [INFO] src.train: 
+2026-10-15 09:35:06,543 [INFO] src.train: ======================================================================
+2026-10-15 09:35:06,544 [INFO] src.train:   滚动训练: 测试年 = 2025
+2026-10-15 09:35:06,544 [INFO] src.train: ======================================================================
+2026-10-15 09:35:06,544 [INFO] src.train:   区间: train=2015-2022, val=2023-2024, test=2025
+2026-10-15 09:35:06,545 [INFO] src.train:   内存占用 (折开始): 6626 MB
+2026-10-15 09:35:06,731 [ERROR] src.train:   !! 错误: Unable to allocate 1.88 GiB for an array with shape (40, 6324734) and data type float64
+Traceback (most recent call last):
+  File "D:\agru择时\src\train.py", line 81, in run
+    fold_result = self._train_one_fold(test_year)
+  File "D:\agru择时\src\train.py", line 123, in _train_one_fold
+    stats = self.fm.fit_standardizer(feat.loc[train_mask])
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1414, in _getitem_axis
+    return self._getbool_axis(key, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\indexing.py", line 1212, in _getbool_axis
+    return self.obj._take_with_is_copy(inds, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4175, in _take_with_is_copy
+    result = self.take(indices=indices, axis=axis)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\generic.py", line 4155, in take
+    new_data = self._mgr.take(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 913, in take
+    return self.reindex_indexer(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 706, in reindex_indexer
+    new_blocks = [
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\managers.py", line 707, in <listcomp>
+    blk.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\internals\blocks.py", line 1373, in take_nd
+    new_values = algos.take_nd(
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 117, in take_nd
+    return _take_nd_ndarray(arr, indexer, axis, fill_value, allow_fill)
+  File "D:\Miniforge\envs\aiquant\lib\site-packages\pandas\core\array_algos\take.py", line 157, in _take_nd_ndarray
+    out = np.empty(out_shape, dtype=dtype)
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.88 GiB for an array with shape (40, 6324734) and data type float64
+2026-10-15 09:35:06,877 [INFO] src.train:   内存占用: 6626 MB
+2026-10-15 09:35:06,878 [WARNING] root: 未生成任何信号!
+2026-10-15 09:35:06,878 [INFO] root: 训练完成。日志: D:\agru择时\results\train_20261015_084156.log

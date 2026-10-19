@@ -1,0 +1,181 @@
+2026-10-19 00:42:09,663 [INFO] root: 日志文件: E:\中山证券quant\agru择时\results\train_20261019_004209.log
+2026-10-19 00:42:09,664 [INFO] root: ======================================================================
+2026-10-19 00:42:09,674 [INFO] root: AGRU 神经网络大盘择时 - 全量训练
+2026-10-19 00:42:09,674 [INFO] root: ======================================================================
+2026-10-19 00:42:09,815 [INFO] root: 启动滚动训练 (按折加载, 不一次性加载全部数据)...
+2026-10-19 00:42:09,844 [INFO] src.train:   设备: cuda
+2026-10-19 00:42:09,845 [INFO] src.train:   特征数: 40
+2026-10-19 00:42:09,845 [INFO] src.train:   数据目录: E:\中山证券quant\agru择时\data
+2026-10-19 00:42:09,845 [INFO] src.train:   滚动折: [2020, 2021, 2022, 2023, 2024, 2025]
+2026-10-19 00:42:09,845 [INFO] src.train:   训练参数: batch=12000, epochs=100, lr=0.001, patience=10, grad_clip=1.0
+2026-10-19 00:42:09,860 [INFO] src.train:   内存占用: 494 MB
+2026-10-19 00:42:09,860 [INFO] src.train: 
+2026-10-19 00:42:09,860 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,861 [INFO] src.train:   滚动训练: 测试年 = 2020
+2026-10-19 00:42:09,861 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,861 [INFO] src.train:   [checkpoint] 发现已完成折, 跳过
+2026-10-19 00:42:09,870 [INFO] src.train:   信号分布: {1: 99, 0: 97, 2: 47} (243 天)
+2026-10-19 00:42:09,870 [INFO] src.train: 
+2026-10-19 00:42:09,871 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,871 [INFO] src.train:   滚动训练: 测试年 = 2021
+2026-10-19 00:42:09,871 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,871 [INFO] src.train:   [checkpoint] 发现已完成折, 跳过
+2026-10-19 00:42:09,877 [INFO] src.train:   信号分布: {1: 136, 0: 79, 2: 28} (243 天)
+2026-10-19 00:42:09,877 [INFO] src.train: 
+2026-10-19 00:42:09,877 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,877 [INFO] src.train:   滚动训练: 测试年 = 2022
+2026-10-19 00:42:09,877 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,877 [INFO] src.train:   [checkpoint] 发现已完成折, 跳过
+2026-10-19 00:42:09,882 [INFO] src.train:   信号分布: {0: 86, 1: 78, 2: 78} (242 天)
+2026-10-19 00:42:09,882 [INFO] src.train: 
+2026-10-19 00:42:09,882 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,882 [INFO] src.train:   滚动训练: 测试年 = 2023
+2026-10-19 00:42:09,882 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,883 [INFO] src.train:   [checkpoint] 发现已完成折, 跳过
+2026-10-19 00:42:09,889 [INFO] src.train:   信号分布: {1: 121, 0: 68, 2: 53} (242 天)
+2026-10-19 00:42:09,889 [INFO] src.train: 
+2026-10-19 00:42:09,889 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,889 [INFO] src.train:   滚动训练: 测试年 = 2024
+2026-10-19 00:42:09,889 [INFO] src.train: ======================================================================
+2026-10-19 00:42:09,889 [INFO] src.train:   区间: train=2015-2021, val=2022-2023, test=2024
+2026-10-19 00:42:09,889 [INFO] src.train:   内存占用 (折开始): 495 MB
+2026-10-19 00:42:09,904 [INFO] src.train:   加载数据 (2015-2024)...
+2026-10-19 00:42:11,418 [INFO] src.train:     加载 2015: 534,696 行, mem=774MB
+2026-10-19 00:42:13,085 [INFO] src.train:     加载 2016: 611,923 行, mem=935MB
+2026-10-19 00:42:14,932 [INFO] src.train:     加载 2017: 678,705 行, mem=1088MB
+2026-10-19 00:42:16,992 [INFO] src.train:     加载 2018: 779,968 行, mem=1237MB
+2026-10-19 00:42:19,218 [INFO] src.train:     加载 2019: 838,372 行, mem=1361MB
+2026-10-19 00:42:21,458 [INFO] src.train:     加载 2020: 862,778 行, mem=1531MB
+2026-10-19 00:42:23,885 [INFO] src.train:     加载 2021: 953,700 行, mem=1711MB
+2026-10-19 00:42:26,641 [INFO] src.train:     加载 2022: 1,064,592 行, mem=1917MB
+2026-10-19 00:42:29,670 [INFO] src.train:     加载 2023: 1,145,099 行, mem=2112MB
+2026-10-19 00:42:32,746 [INFO] src.train:     加载 2024: 1,191,693 行, mem=2342MB
+2026-10-19 00:42:33,820 [INFO] src.train:   数据加载完成: 8,661,526 行, 5,275 只股票, 23.9s
+2026-10-19 00:42:33,820 [INFO] src.train:   内存占用 (加载后): 3764 MB
+2026-10-19 00:42:47,102 [INFO] src.train:   内存占用 (标准化后): 3764 MB
+2026-10-19 00:42:47,102 [INFO] src.train:   构建共享数据存储...
+2026-10-19 00:42:59,462 [INFO] src.train:   数据存储构建完成: 5,275 只股票, 12.4s
+2026-10-19 00:42:59,462 [INFO] src.train:   内存占用 (store后): 1949 MB
+2026-10-19 00:42:59,462 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-19 00:43:57,955 [INFO] src.train:   样本量: train=5,176,370, val=2,196,109, test=1,188,880
+2026-10-19 00:43:58,361 [INFO] src.train:   模型参数量: 69,251
+2026-10-19 00:45:40,769 [INFO] src.train:     batch 200/431 (46%) | 99s elapsed, ~115s remaining, mem=3644MB
+2026-10-19 00:47:19,318 [INFO] src.train:     batch 400/431 (93%) | 198s elapsed, ~15s remaining, mem=3645MB
+2026-10-19 00:48:56,919 [INFO] src.train:   Epoch   1/100 | loss=1.0624 | IC=0.0735 | train=215s val=81s | total=295s | mem=3325MB
+2026-10-19 00:48:56,921 [INFO] src.train:     ^ new best IC=0.0735
+2026-10-19 00:50:54,097 [INFO] src.train:     batch 200/431 (46%) | 117s elapsed, ~135s remaining, mem=3556MB
+2026-10-19 00:52:24,819 [INFO] src.train:     batch 400/431 (93%) | 208s elapsed, ~16s remaining, mem=3556MB
+2026-10-19 00:53:43,438 [INFO] src.train:   Epoch   2/100 | loss=1.0249 | IC=0.0659 | train=222s val=65s | total=582s | mem=3330MB
+2026-10-19 00:55:07,965 [INFO] src.train:     batch 200/431 (46%) | 85s elapsed, ~98s remaining, mem=3557MB
+2026-10-19 00:56:35,801 [INFO] src.train:     batch 400/431 (93%) | 172s elapsed, ~13s remaining, mem=3487MB
+2026-10-19 00:57:55,315 [INFO] src.train:   Epoch   3/100 | loss=0.8986 | IC=0.0376 | train=186s val=66s | total=834s | mem=3265MB
+2026-10-19 00:59:20,174 [INFO] src.train:     batch 200/431 (46%) | 85s elapsed, ~98s remaining, mem=3487MB
+2026-10-19 01:00:51,490 [INFO] src.train:     batch 400/431 (93%) | 176s elapsed, ~14s remaining, mem=3486MB
+2026-10-19 01:02:10,629 [INFO] src.train:   Epoch   4/100 | loss=0.6661 | IC=0.0490 | train=190s val=65s | total=1089s | mem=3267MB
+2026-10-19 01:03:37,781 [INFO] src.train:     batch 200/431 (46%) | 87s elapsed, ~101s remaining, mem=3487MB
+2026-10-19 01:05:02,477 [INFO] src.train:     batch 400/431 (93%) | 172s elapsed, ~13s remaining, mem=3487MB
+2026-10-19 01:06:21,054 [INFO] src.train:   Epoch   5/100 | loss=0.4608 | IC=0.0498 | train=185s val=65s | total=1339s | mem=3268MB
+2026-10-19 01:07:50,940 [INFO] src.train:     batch 200/431 (46%) | 90s elapsed, ~104s remaining, mem=3486MB
+2026-10-19 01:09:18,504 [INFO] src.train:     batch 400/431 (93%) | 177s elapsed, ~14s remaining, mem=3486MB
+2026-10-19 01:10:43,185 [INFO] src.train:   Epoch   6/100 | loss=0.3324 | IC=0.0588 | train=191s val=71s | total=1602s | mem=3271MB
+2026-10-19 01:12:08,326 [INFO] src.train:     batch 200/431 (46%) | 85s elapsed, ~98s remaining, mem=3486MB
+2026-10-19 01:13:32,915 [INFO] src.train:     batch 400/431 (93%) | 170s elapsed, ~13s remaining, mem=3486MB
+2026-10-19 01:14:51,973 [INFO] src.train:   Epoch   7/100 | loss=0.2595 | IC=0.0569 | train=184s val=65s | total=1850s | mem=3274MB
+2026-10-19 01:16:18,012 [INFO] src.train:     batch 200/431 (46%) | 86s elapsed, ~99s remaining, mem=3486MB
+2026-10-19 01:17:49,108 [INFO] src.train:     batch 400/431 (93%) | 177s elapsed, ~14s remaining, mem=3486MB
+2026-10-19 01:19:08,763 [INFO] src.train:   Epoch   8/100 | loss=0.2146 | IC=0.0555 | train=191s val=66s | total=2107s | mem=3274MB
+2026-10-19 01:20:34,232 [INFO] src.train:     batch 200/431 (46%) | 85s elapsed, ~99s remaining, mem=3486MB
+2026-10-19 01:22:04,225 [INFO] src.train:     batch 400/431 (93%) | 175s elapsed, ~14s remaining, mem=3485MB
+2026-10-19 01:23:25,454 [INFO] src.train:   Epoch   9/100 | loss=0.1843 | IC=0.0506 | train=190s val=66s | total=2364s | mem=3276MB
+2026-10-19 01:24:52,457 [INFO] src.train:     batch 200/431 (46%) | 87s elapsed, ~100s remaining, mem=3485MB
+2026-10-19 01:26:22,915 [INFO] src.train:     batch 400/431 (93%) | 177s elapsed, ~14s remaining, mem=3485MB
+2026-10-19 01:27:42,102 [INFO] src.train:   Epoch  10/100 | loss=0.1628 | IC=0.0358 | train=191s val=65s | total=2621s | mem=3279MB
+2026-10-19 01:29:09,715 [INFO] src.train:     batch 200/431 (46%) | 88s elapsed, ~101s remaining, mem=3484MB
+2026-10-19 01:30:39,459 [INFO] src.train:     batch 400/431 (93%) | 177s elapsed, ~14s remaining, mem=3484MB
+2026-10-19 01:31:59,657 [INFO] src.train:   Epoch  11/100 | loss=0.1477 | IC=0.0370 | train=192s val=66s | total=2878s | mem=3279MB
+2026-10-19 01:31:59,657 [INFO] src.train:   早停 @ epoch 11, best IC=0.0735
+2026-10-19 01:31:59,661 [INFO] src.train:   训练完成: best val TSRankIC = 0.0735, 总耗时 2878s
+2026-10-19 01:32:02,162 [INFO] src.train:   [checkpoint] 模型权重已保存: E:\中山证券quant\agru择时\checkpoints\model_2024.pt
+2026-10-19 01:32:02,162 [INFO] src.train:   生成验证集阈值...
+2026-10-19 01:33:09,222 [INFO] src.train:   生成测试集信号...
+2026-10-19 01:33:47,635 [INFO] src.train:   信号分布: {2: 116, 1: 75, 0: 51}
+2026-10-19 01:33:47,636 [INFO] src.train:   内存占用 (折结束): 745 MB
+2026-10-19 01:33:47,684 [INFO] src.train:   [checkpoint] 信号已保存: E:\中山证券quant\agru择时\checkpoints\signals_2024.csv
+2026-10-19 01:33:47,791 [INFO] src.train:   内存占用: 741 MB
+2026-10-19 01:33:47,792 [INFO] src.train: 
+2026-10-19 01:33:47,792 [INFO] src.train: ======================================================================
+2026-10-19 01:33:47,792 [INFO] src.train:   滚动训练: 测试年 = 2025
+2026-10-19 01:33:47,792 [INFO] src.train: ======================================================================
+2026-10-19 01:33:47,792 [INFO] src.train:   区间: train=2015-2022, val=2023-2024, test=2025
+2026-10-19 01:33:47,793 [INFO] src.train:   内存占用 (折开始): 741 MB
+2026-10-19 01:33:47,821 [INFO] src.train:   加载数据 (2015-2025)...
+2026-10-19 01:33:49,497 [INFO] src.train:     加载 2015: 534,696 行, mem=1005MB
+2026-10-19 01:33:51,197 [INFO] src.train:     加载 2016: 611,923 行, mem=1124MB
+2026-10-19 01:33:53,080 [INFO] src.train:     加载 2017: 678,705 行, mem=1252MB
+2026-10-19 01:33:56,364 [INFO] src.train:     加载 2018: 779,968 行, mem=1413MB
+2026-10-19 01:33:58,452 [INFO] src.train:     加载 2019: 838,372 行, mem=1572MB
+2026-10-19 01:34:00,720 [INFO] src.train:     加载 2020: 862,778 行, mem=1728MB
+2026-10-19 01:34:03,151 [INFO] src.train:     加载 2021: 953,700 行, mem=1909MB
+2026-10-19 01:34:05,867 [INFO] src.train:     加载 2022: 1,064,592 行, mem=2085MB
+2026-10-19 01:34:08,849 [INFO] src.train:     加载 2023: 1,145,099 行, mem=2318MB
+2026-10-19 01:34:11,888 [INFO] src.train:     加载 2024: 1,191,693 行, mem=2525MB
+2026-10-19 01:34:14,296 [INFO] src.train:     加载 2025: 902,198 行, mem=2638MB
+2026-10-19 01:34:15,625 [INFO] src.train:   数据加载完成: 9,563,724 行, 5,343 只股票, 27.8s
+2026-10-19 01:34:15,626 [INFO] src.train:   内存占用 (加载后): 4207 MB
+2026-10-19 01:34:30,998 [INFO] src.train:   内存占用 (标准化后): 4205 MB
+2026-10-19 01:34:30,999 [INFO] src.train:   构建共享数据存储...
+2026-10-19 01:34:45,771 [INFO] src.train:   数据存储构建完成: 5,343 只股票, 14.8s
+2026-10-19 01:34:45,779 [INFO] src.train:   内存占用 (store后): 1719 MB
+2026-10-19 01:34:45,779 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-19 01:35:47,618 [INFO] src.train:   样本量: train=6,233,436, val=2,327,923, test=896,014
+2026-10-19 01:35:47,763 [INFO] src.train:   模型参数量: 69,251
+2026-10-19 01:37:12,427 [INFO] src.train:     batch 200/519 (39%) | 85s elapsed, ~135s remaining, mem=3321MB
+2026-10-19 01:38:39,625 [INFO] src.train:     batch 400/519 (77%) | 172s elapsed, ~51s remaining, mem=3326MB
+2026-10-19 01:40:41,632 [INFO] src.train:   Epoch   1/100 | loss=1.0628 | IC=0.0734 | train=224s val=70s | total=294s | mem=3114MB
+2026-10-19 01:40:41,633 [INFO] src.train:     ^ new best IC=0.0734
+2026-10-19 01:42:07,913 [INFO] src.train:     batch 200/519 (39%) | 86s elapsed, ~138s remaining, mem=3350MB
+2026-10-19 01:43:34,226 [INFO] src.train:     batch 400/519 (77%) | 173s elapsed, ~51s remaining, mem=3351MB
+2026-10-19 01:45:38,336 [INFO] src.train:   Epoch   2/100 | loss=1.0018 | IC=0.0849 | train=226s val=70s | total=591s | mem=3089MB
+2026-10-19 01:45:38,337 [INFO] src.train:     ^ new best IC=0.0849
+2026-10-19 01:47:03,810 [INFO] src.train:     batch 200/519 (39%) | 85s elapsed, ~136s remaining, mem=3355MB
+2026-10-19 01:48:29,382 [INFO] src.train:     batch 400/519 (77%) | 171s elapsed, ~51s remaining, mem=3356MB
+2026-10-19 01:50:34,770 [INFO] src.train:   Epoch   3/100 | loss=0.8128 | IC=0.0813 | train=223s val=74s | total=887s | mem=3126MB
+2026-10-19 01:52:04,441 [INFO] src.train:     batch 200/519 (39%) | 90s elapsed, ~143s remaining, mem=3358MB
+2026-10-19 01:53:29,937 [INFO] src.train:     batch 400/519 (77%) | 175s elapsed, ~52s remaining, mem=3358MB
+2026-10-19 01:55:39,967 [INFO] src.train:   Epoch   4/100 | loss=0.5725 | IC=0.0807 | train=229s val=77s | total=1192s | mem=3131MB
+2026-10-19 01:57:09,087 [INFO] src.train:     batch 200/519 (39%) | 89s elapsed, ~142s remaining, mem=3358MB
+2026-10-19 01:58:38,724 [INFO] src.train:     batch 400/519 (77%) | 179s elapsed, ~53s remaining, mem=3358MB
+2026-10-19 02:00:45,812 [INFO] src.train:   Epoch   5/100 | loss=0.3997 | IC=0.0726 | train=235s val=71s | total=1498s | mem=3133MB
+2026-10-19 02:02:15,939 [INFO] src.train:     batch 200/519 (39%) | 90s elapsed, ~144s remaining, mem=3359MB
+2026-10-19 02:03:48,733 [INFO] src.train:     batch 400/519 (77%) | 183s elapsed, ~54s remaining, mem=3359MB
+2026-10-19 02:05:59,336 [INFO] src.train:   Epoch   6/100 | loss=0.2991 | IC=0.0598 | train=238s val=75s | total=1812s | mem=3132MB
+2026-10-19 02:07:26,050 [INFO] src.train:     batch 200/519 (39%) | 87s elapsed, ~138s remaining, mem=3359MB
+2026-10-19 02:08:59,608 [INFO] src.train:     batch 400/519 (77%) | 180s elapsed, ~54s remaining, mem=3359MB
+2026-10-19 02:11:03,466 [INFO] src.train:   Epoch   7/100 | loss=0.2386 | IC=0.0723 | train=233s val=71s | total=2116s | mem=3133MB
+2026-10-19 02:12:36,056 [INFO] src.train:     batch 200/519 (39%) | 93s elapsed, ~148s remaining, mem=3359MB
+2026-10-19 02:14:02,877 [INFO] src.train:     batch 400/519 (77%) | 179s elapsed, ~53s remaining, mem=3359MB
+2026-10-19 02:16:11,402 [INFO] src.train:   Epoch   8/100 | loss=0.2001 | IC=0.0600 | train=236s val=72s | total=2424s | mem=3134MB
+2026-10-19 02:17:40,617 [INFO] src.train:     batch 200/519 (39%) | 89s elapsed, ~142s remaining, mem=3359MB
+2026-10-19 02:19:13,909 [INFO] src.train:     batch 400/519 (77%) | 183s elapsed, ~54s remaining, mem=3359MB
+2026-10-19 02:21:15,033 [INFO] src.train:   Epoch   9/100 | loss=0.1733 | IC=0.0699 | train=234s val=70s | total=2727s | mem=3134MB
+2026-10-19 02:22:47,770 [INFO] src.train:     batch 200/519 (39%) | 93s elapsed, ~148s remaining, mem=3359MB
+2026-10-19 02:24:15,451 [INFO] src.train:     batch 400/519 (77%) | 180s elapsed, ~54s remaining, mem=3359MB
+2026-10-19 02:26:22,925 [INFO] src.train:   Epoch  10/100 | loss=0.1539 | IC=0.0783 | train=235s val=73s | total=3035s | mem=3137MB
+2026-10-19 02:27:50,004 [INFO] src.train:     batch 200/519 (39%) | 87s elapsed, ~139s remaining, mem=3359MB
+2026-10-19 02:29:21,825 [INFO] src.train:     batch 400/519 (77%) | 179s elapsed, ~53s remaining, mem=3359MB
+2026-10-19 02:31:25,825 [INFO] src.train:   Epoch  11/100 | loss=0.1395 | IC=0.0592 | train=230s val=72s | total=3338s | mem=3134MB
+2026-10-19 02:32:56,777 [INFO] src.train:     batch 200/519 (39%) | 91s elapsed, ~145s remaining, mem=3359MB
+2026-10-19 02:34:22,734 [INFO] src.train:     batch 400/519 (77%) | 177s elapsed, ~53s remaining, mem=3359MB
+2026-10-19 02:36:25,095 [INFO] src.train:   Epoch  12/100 | loss=0.1289 | IC=0.0650 | train=229s val=70s | total=3637s | mem=3136MB
+2026-10-19 02:36:25,095 [INFO] src.train:   早停 @ epoch 12, best IC=0.0849
+2026-10-19 02:36:25,099 [INFO] src.train:   训练完成: best val TSRankIC = 0.0849, 总耗时 3637s
+2026-10-19 02:36:27,353 [INFO] src.train:   [checkpoint] 模型权重已保存: E:\中山证券quant\agru择时\checkpoints\model_2025.pt
+2026-10-19 02:36:27,354 [INFO] src.train:   生成验证集阈值...
+2026-10-19 02:37:40,027 [INFO] src.train:   生成测试集信号...
+2026-10-19 02:38:07,704 [INFO] src.train:   信号分布: {0: 81, 1: 63, 2: 38}
+2026-10-19 02:38:07,704 [INFO] src.train:   内存占用 (折结束): 314 MB
+2026-10-19 02:38:07,744 [INFO] src.train:   [checkpoint] 信号已保存: E:\中山证券quant\agru择时\checkpoints\signals_2025.csv
+2026-10-19 02:38:07,831 [INFO] src.train:   内存占用: 312 MB
+2026-10-19 02:38:07,916 [INFO] root: 全部信号已保存: E:\中山证券quant\agru择时\results\signals.csv (1394 天)
+2026-10-19 02:38:07,917 [INFO] root: 信号分布: {1: 572, 0: 462, 2: 360}
+2026-10-19 02:38:07,917 [INFO] root: 训练完成。日志: E:\中山证券quant\agru择时\results\train_20261019_004209.log

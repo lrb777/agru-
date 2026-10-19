@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (too large for GitHub, >100MB, can be regenerated via `python run.py fetch`)
+data/*.parquet
+
+# Smoke test checkpoints
+checkpoints_smoke/
+
+# Logs (keep training logs in results/ for reference)
+# Uncomment to exclude: results/*.log

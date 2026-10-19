@@ -1,0 +1,184 @@
+2026-10-15 11:16:19,815 [INFO] root: 日志文件: E:\中山证券quant\agru择时\results\train_20261015_111619.log
+2026-10-15 11:16:19,815 [INFO] root: ======================================================================
+2026-10-15 11:16:19,828 [INFO] root: AGRU 神经网络大盘择时 - 全量训练
+2026-10-15 11:16:19,828 [INFO] root: ======================================================================
+2026-10-15 11:16:19,906 [INFO] root: 启动滚动训练 (按折加载, 不一次性加载全部数据)...
+2026-10-15 11:16:19,964 [INFO] src.train:   设备: cpu
+2026-10-15 11:16:19,965 [INFO] src.train:   特征数: 40
+2026-10-15 11:16:19,965 [INFO] src.train:   数据目录: E:\中山证券quant\agru择时\data
+2026-10-15 11:16:19,965 [INFO] src.train:   滚动折: [2020, 2021, 2022, 2023, 2024, 2025]
+2026-10-15 11:16:19,965 [INFO] src.train:   训练参数: batch=12000, epochs=100, lr=0.001, patience=10, grad_clip=1.0
+2026-10-15 11:16:20,040 [INFO] src.train:   内存占用: 297 MB
+2026-10-15 11:16:20,040 [INFO] src.train: 
+2026-10-15 11:16:20,040 [INFO] src.train: ======================================================================
+2026-10-15 11:16:20,040 [INFO] src.train:   滚动训练: 测试年 = 2020
+2026-10-15 11:16:20,040 [INFO] src.train: ======================================================================
+2026-10-15 11:16:20,040 [INFO] src.train:   区间: train=2015-2017, val=2018-2019, test=2020
+2026-10-15 11:16:20,041 [INFO] src.train:   内存占用 (折开始): 297 MB
+2026-10-15 11:16:20,084 [INFO] src.train:   加载数据 (2015-2020)...
+2026-10-15 11:16:21,573 [INFO] src.train:     加载 2015: 534,696 行, mem=580MB
+2026-10-15 11:16:22,988 [INFO] src.train:     加载 2016: 611,923 行, mem=701MB
+2026-10-15 11:16:24,303 [INFO] src.train:     加载 2017: 678,705 行, mem=867MB
+2026-10-15 11:16:25,791 [INFO] src.train:     加载 2018: 779,968 行, mem=1042MB
+2026-10-15 11:16:27,405 [INFO] src.train:     加载 2019: 838,372 行, mem=1217MB
+2026-10-15 11:16:29,050 [INFO] src.train:     加载 2020: 862,778 行, mem=1304MB
+2026-10-15 11:16:29,599 [INFO] src.train:   数据加载完成: 4,306,442 行, 3,906 只股票, 9.5s
+2026-10-15 11:16:29,599 [INFO] src.train:   内存占用 (加载后): 2012 MB
+2026-10-15 11:16:32,873 [INFO] src.train:   内存占用 (标准化后): 2012 MB
+2026-10-15 11:16:32,874 [INFO] src.train:   构建共享数据存储...
+2026-10-15 11:16:39,311 [INFO] src.train:   数据存储构建完成: 3,906 只股票, 6.4s
+2026-10-15 11:16:39,312 [INFO] src.train:   内存占用 (store后): 1229 MB
+2026-10-15 11:16:39,312 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-15 11:17:12,577 [INFO] src.train:   样本量: train=1,763,184, val=1,611,369, test=857,936
+2026-10-15 11:17:12,627 [INFO] src.train:   模型参数量: 69,251
+2026-10-15 11:23:46,825 [INFO] src.train:   Epoch   1/100 | loss=1.0311 | IC=0.0221 | train=301s val=91s | total=392s | mem=2293MB
+2026-10-15 11:23:46,826 [INFO] src.train:     ^ new best IC=0.0221
+2026-10-15 11:30:34,738 [INFO] src.train:   Epoch   2/100 | loss=0.9943 | IC=0.0363 | train=305s val=103s | total=800s | mem=2093MB
+2026-10-15 11:30:34,739 [INFO] src.train:     ^ new best IC=0.0363
+2026-10-15 11:37:01,535 [INFO] src.train:   Epoch   3/100 | loss=0.9812 | IC=0.0480 | train=294s val=92s | total=1187s | mem=1975MB
+2026-10-15 11:37:01,536 [INFO] src.train:     ^ new best IC=0.0480
+2026-10-15 11:43:08,103 [INFO] src.train:   Epoch   4/100 | loss=0.9641 | IC=0.0740 | train=277s val=90s | total=1554s | mem=2036MB
+2026-10-15 11:43:08,104 [INFO] src.train:     ^ new best IC=0.0740
+2026-10-15 11:49:20,024 [INFO] src.train:   Epoch   5/100 | loss=0.9347 | IC=0.0680 | train=286s val=86s | total=1925s | mem=1822MB
+2026-10-15 11:55:14,934 [INFO] src.train:   Epoch   6/100 | loss=0.8872 | IC=0.0796 | train=271s val=84s | total=2280s | mem=1824MB
+2026-10-15 11:55:14,935 [INFO] src.train:     ^ new best IC=0.0796
+2026-10-15 12:01:09,715 [INFO] src.train:   Epoch   7/100 | loss=0.8140 | IC=0.0415 | train=270s val=85s | total=2635s | mem=1825MB
+2026-10-15 12:07:10,928 [INFO] src.train:   Epoch   8/100 | loss=0.7217 | IC=0.0529 | train=277s val=85s | total=2996s | mem=2008MB
+2026-10-15 12:13:05,570 [INFO] src.train:   Epoch   9/100 | loss=0.6225 | IC=0.0461 | train=270s val=85s | total=3351s | mem=1794MB
+2026-10-15 12:18:57,520 [INFO] src.train:   Epoch  10/100 | loss=0.5317 | IC=0.0701 | train=266s val=86s | total=3703s | mem=2008MB
+2026-10-15 12:24:53,967 [INFO] src.train:   Epoch  11/100 | loss=0.4542 | IC=0.0645 | train=271s val=85s | total=4059s | mem=2009MB
+2026-10-15 12:30:48,686 [INFO] src.train:   Epoch  12/100 | loss=0.3889 | IC=0.0447 | train=270s val=85s | total=4414s | mem=1796MB
+2026-10-15 12:36:44,003 [INFO] src.train:   Epoch  13/100 | loss=0.3346 | IC=0.0362 | train=271s val=84s | total=4769s | mem=1893MB
+2026-10-15 12:42:35,096 [INFO] src.train:   Epoch  14/100 | loss=0.2934 | IC=0.0346 | train=267s val=84s | total=5121s | mem=1816MB
+2026-10-15 12:48:31,841 [INFO] src.train:   Epoch  15/100 | loss=0.2591 | IC=0.0052 | train=273s val=84s | total=5477s | mem=1795MB
+2026-10-15 12:54:28,060 [INFO] src.train:   Epoch  16/100 | loss=0.2332 | IC=0.0257 | train=271s val=85s | total=5833s | mem=1895MB
+2026-10-15 12:54:28,060 [INFO] src.train:   早停 @ epoch 16, best IC=0.0796
+2026-10-15 12:54:28,061 [INFO] src.train:   训练完成: best val TSRankIC = 0.0796, 总耗时 5833s
+2026-10-15 12:54:28,378 [INFO] src.train:   [checkpoint] 模型权重已保存: E:\中山证券quant\agru择时\checkpoints\model_2020.pt
+2026-10-15 12:54:28,378 [INFO] src.train:   生成验证集阈值...
+2026-10-15 12:55:51,890 [INFO] src.train:   生成测试集信号...
+2026-10-15 12:56:37,200 [INFO] src.train:   信号分布: {1: 99, 0: 97, 2: 47}
+2026-10-15 12:56:37,201 [INFO] src.train:   内存占用 (折结束): 386 MB
+2026-10-15 12:56:39,230 [INFO] src.train:   [checkpoint] 信号已保存: E:\中山证券quant\agru择时\checkpoints\signals_2020.csv
+2026-10-15 12:56:39,348 [INFO] src.train:   内存占用: 383 MB
+2026-10-15 12:56:39,348 [INFO] src.train: 
+2026-10-15 12:56:39,348 [INFO] src.train: ======================================================================
+2026-10-15 12:56:39,348 [INFO] src.train:   滚动训练: 测试年 = 2021
+2026-10-15 12:56:39,348 [INFO] src.train: ======================================================================
+2026-10-15 12:56:39,349 [INFO] src.train:   区间: train=2015-2018, val=2019-2020, test=2021
+2026-10-15 12:56:39,349 [INFO] src.train:   内存占用 (折开始): 383 MB
+2026-10-15 12:56:39,366 [INFO] src.train:   加载数据 (2015-2021)...
+2026-10-15 12:56:40,915 [INFO] src.train:     加载 2015: 534,696 行, mem=577MB
+2026-10-15 12:56:42,603 [INFO] src.train:     加载 2016: 611,923 行, mem=748MB
+2026-10-15 12:56:45,553 [INFO] src.train:     加载 2017: 678,705 行, mem=898MB
+2026-10-15 12:56:47,584 [INFO] src.train:     加载 2018: 779,968 行, mem=1061MB
+2026-10-15 12:56:49,773 [INFO] src.train:     加载 2019: 838,372 行, mem=1232MB
+2026-10-15 12:56:52,002 [INFO] src.train:     加载 2020: 862,778 行, mem=1388MB
+2026-10-15 12:56:54,424 [INFO] src.train:     加载 2021: 953,700 行, mem=1569MB
+2026-10-15 12:56:54,991 [INFO] src.train:   数据加载完成: 5,260,142 行, 4,431 只股票, 15.6s
+2026-10-15 12:56:54,991 [INFO] src.train:   内存占用 (加载后): 2432 MB
+2026-10-15 12:56:59,355 [INFO] src.train:   内存占用 (标准化后): 2419 MB
+2026-10-15 12:56:59,355 [INFO] src.train:   构建共享数据存储...
+2026-10-15 12:57:07,607 [INFO] src.train:   数据存储构建完成: 4,431 只股票, 8.3s
+2026-10-15 12:57:07,608 [INFO] src.train:   内存占用 (store后): 1406 MB
+2026-10-15 12:57:07,608 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-15 12:57:45,907 [INFO] src.train:   样本量: train=2,538,217, val=1,694,272, test=943,881
+2026-10-15 12:57:45,921 [INFO] src.train:   模型参数量: 69,251
+2026-10-15 13:03:58,741 [INFO] src.train:     batch 200/211 (95%) | 373s elapsed, ~21s remaining, mem=2697MB
+2026-10-15 13:06:02,850 [INFO] src.train:   Epoch   1/100 | loss=1.0501 | IC=0.0154 | train=396s val=101s | total=497s | mem=2501MB
+2026-10-15 13:06:02,851 [INFO] src.train:     ^ new best IC=0.0154
+2026-10-15 13:14:07,182 [INFO] src.train:     batch 200/211 (95%) | 484s elapsed, ~27s remaining, mem=2663MB
+2026-10-15 13:16:24,604 [INFO] src.train:   Epoch   2/100 | loss=1.0246 | IC=0.0739 | train=516s val=106s | total=1119s | mem=2237MB
+2026-10-15 13:16:24,605 [INFO] src.train:     ^ new best IC=0.0739
+2026-10-15 13:23:19,709 [INFO] src.train:     batch 200/211 (95%) | 415s elapsed, ~23s remaining, mem=2408MB
+2026-10-15 13:25:24,403 [INFO] src.train:   Epoch   3/100 | loss=1.0095 | IC=0.1062 | train=438s val=102s | total=1658s | mem=1924MB
+2026-10-15 13:25:24,404 [INFO] src.train:     ^ new best IC=0.1062
+2026-10-15 13:32:05,381 [INFO] src.train:     batch 200/211 (95%) | 401s elapsed, ~22s remaining, mem=2109MB
+2026-10-15 13:33:55,194 [INFO] src.train:   Epoch   4/100 | loss=0.9824 | IC=0.1276 | train=421s val=89s | total=2169s | mem=1897MB
+2026-10-15 13:33:55,194 [INFO] src.train:     ^ new best IC=0.1276
+2026-10-15 13:40:00,367 [INFO] src.train:     batch 200/211 (95%) | 365s elapsed, ~20s remaining, mem=2392MB
+2026-10-15 13:41:50,084 [INFO] src.train:   Epoch   5/100 | loss=0.9140 | IC=0.1548 | train=385s val=90s | total=2644s | mem=1904MB
+2026-10-15 13:41:50,085 [INFO] src.train:     ^ new best IC=0.1548
+2026-10-15 13:47:56,821 [INFO] src.train:     batch 200/211 (95%) | 367s elapsed, ~20s remaining, mem=2099MB
+2026-10-15 13:49:45,615 [INFO] src.train:   Epoch   6/100 | loss=0.7772 | IC=0.1340 | train=387s val=89s | total=3120s | mem=2136MB
+2026-10-15 13:55:47,120 [INFO] src.train:     batch 200/211 (95%) | 362s elapsed, ~20s remaining, mem=2099MB
+2026-10-15 13:57:35,893 [INFO] src.train:   Epoch   7/100 | loss=0.6065 | IC=0.1389 | train=382s val=89s | total=3590s | mem=1905MB
+2026-10-15 14:03:43,958 [INFO] src.train:     batch 200/211 (95%) | 368s elapsed, ~20s remaining, mem=2355MB
+2026-10-15 14:05:37,416 [INFO] src.train:   Epoch   8/100 | loss=0.4578 | IC=0.1613 | train=388s val=93s | total=4071s | mem=2140MB
+2026-10-15 14:05:37,417 [INFO] src.train:     ^ new best IC=0.1613
+2026-10-15 14:11:46,412 [INFO] src.train:     batch 200/211 (95%) | 369s elapsed, ~20s remaining, mem=2355MB
+2026-10-15 14:13:35,790 [INFO] src.train:   Epoch   9/100 | loss=0.3466 | IC=0.1626 | train=389s val=89s | total=4550s | mem=2172MB
+2026-10-15 14:13:35,791 [INFO] src.train:     ^ new best IC=0.1626
+2026-10-15 14:19:39,549 [INFO] src.train:     batch 200/211 (95%) | 364s elapsed, ~20s remaining, mem=2099MB
+2026-10-15 14:21:34,356 [INFO] src.train:   Epoch  10/100 | loss=0.2718 | IC=0.1537 | train=384s val=95s | total=5028s | mem=1902MB
+2026-10-15 14:27:44,372 [INFO] src.train:     batch 200/211 (95%) | 370s elapsed, ~20s remaining, mem=2121MB
+2026-10-15 14:29:38,384 [INFO] src.train:   Epoch  11/100 | loss=0.2252 | IC=0.1503 | train=390s val=94s | total=5512s | mem=2148MB
+2026-10-15 14:35:45,402 [INFO] src.train:     batch 200/211 (95%) | 367s elapsed, ~20s remaining, mem=2379MB
+2026-10-15 14:37:35,343 [INFO] src.train:   Epoch  12/100 | loss=0.1931 | IC=0.1496 | train=387s val=90s | total=5989s | mem=1905MB
+2026-10-15 14:44:11,741 [INFO] src.train:     batch 200/211 (95%) | 396s elapsed, ~22s remaining, mem=2069MB
+2026-10-15 14:46:05,259 [INFO] src.train:   Epoch  13/100 | loss=0.1728 | IC=0.1388 | train=418s val=92s | total=6499s | mem=1884MB
+2026-10-15 14:52:18,951 [INFO] src.train:     batch 200/211 (95%) | 374s elapsed, ~21s remaining, mem=2117MB
+2026-10-15 14:54:10,903 [INFO] src.train:   Epoch  14/100 | loss=0.1579 | IC=0.1333 | train=395s val=91s | total=6985s | mem=2139MB
+2026-10-15 15:00:30,907 [INFO] src.train:     batch 200/211 (95%) | 380s elapsed, ~21s remaining, mem=2108MB
+2026-10-15 15:02:23,615 [INFO] src.train:   Epoch  15/100 | loss=0.1466 | IC=0.1358 | train=401s val=92s | total=7478s | mem=2169MB
+2026-10-15 15:08:52,390 [INFO] src.train:     batch 200/211 (95%) | 389s elapsed, ~21s remaining, mem=2088MB
+2026-10-15 15:10:57,367 [INFO] src.train:   Epoch  16/100 | loss=0.1382 | IC=0.1350 | train=410s val=103s | total=7991s | mem=1902MB
+2026-10-15 15:17:58,570 [INFO] src.train:     batch 200/211 (95%) | 421s elapsed, ~23s remaining, mem=2367MB
+2026-10-15 15:20:10,909 [INFO] src.train:   Epoch  17/100 | loss=0.1315 | IC=0.1115 | train=446s val=108s | total=8545s | mem=2150MB
+2026-10-15 15:26:51,296 [INFO] src.train:     batch 200/211 (95%) | 400s elapsed, ~22s remaining, mem=1968MB
+2026-10-15 15:28:54,155 [INFO] src.train:   Epoch  18/100 | loss=0.1252 | IC=0.1143 | train=423s val=100s | total=9068s | mem=1890MB
+2026-10-15 15:36:03,722 [INFO] src.train:     batch 200/211 (95%) | 430s elapsed, ~24s remaining, mem=2352MB
+2026-10-15 15:38:03,295 [INFO] src.train:   Epoch  19/100 | loss=0.1207 | IC=0.1112 | train=452s val=97s | total=9617s | mem=1904MB
+2026-10-15 15:38:03,296 [INFO] src.train:   早停 @ epoch 19, best IC=0.1626
+2026-10-15 15:38:03,311 [INFO] src.train:   训练完成: best val TSRankIC = 0.1626, 总耗时 9617s
+2026-10-15 15:38:05,425 [INFO] src.train:   [checkpoint] 模型权重已保存: E:\中山证券quant\agru择时\checkpoints\model_2021.pt
+2026-10-15 15:38:05,426 [INFO] src.train:   生成验证集阈值...
+2026-10-15 15:39:43,146 [INFO] src.train:   生成测试集信号...
+2026-10-15 15:40:39,391 [INFO] src.train:   信号分布: {1: 136, 0: 79, 2: 28}
+2026-10-15 15:40:39,392 [INFO] src.train:   内存占用 (折结束): 291 MB
+2026-10-15 15:40:41,456 [INFO] src.train:   [checkpoint] 信号已保存: E:\中山证券quant\agru择时\checkpoints\signals_2021.csv
+2026-10-15 15:40:41,563 [INFO] src.train:   内存占用: 287 MB
+2026-10-15 15:40:41,563 [INFO] src.train: 
+2026-10-15 15:40:41,563 [INFO] src.train: ======================================================================
+2026-10-15 15:40:41,563 [INFO] src.train:   滚动训练: 测试年 = 2022
+2026-10-15 15:40:41,563 [INFO] src.train: ======================================================================
+2026-10-15 15:40:41,564 [INFO] src.train:   区间: train=2015-2019, val=2020-2021, test=2022
+2026-10-15 15:40:41,564 [INFO] src.train:   内存占用 (折开始): 287 MB
+2026-10-15 15:40:41,609 [INFO] src.train:   加载数据 (2015-2022)...
+2026-10-15 15:40:43,220 [INFO] src.train:     加载 2015: 534,696 行, mem=557MB
+2026-10-15 15:40:46,100 [INFO] src.train:     加载 2016: 611,923 行, mem=727MB
+2026-10-15 15:40:47,922 [INFO] src.train:     加载 2017: 678,705 行, mem=868MB
+2026-10-15 15:40:49,956 [INFO] src.train:     加载 2018: 779,968 行, mem=1029MB
+2026-10-15 15:40:52,125 [INFO] src.train:     加载 2019: 838,372 行, mem=1185MB
+2026-10-15 15:40:54,345 [INFO] src.train:     加载 2020: 862,778 行, mem=1351MB
+2026-10-15 15:40:56,779 [INFO] src.train:     加载 2021: 953,700 行, mem=1533MB
+2026-10-15 15:40:59,502 [INFO] src.train:     加载 2022: 1,064,592 行, mem=1703MB
+2026-10-15 15:41:00,238 [INFO] src.train:   数据加载完成: 6,324,734 行, 4,820 只股票, 18.6s
+2026-10-15 15:41:00,239 [INFO] src.train:   内存占用 (加载后): 2741 MB
+2026-10-15 15:41:06,171 [INFO] src.train:   内存占用 (标准化后): 2741 MB
+2026-10-15 15:41:06,171 [INFO] src.train:   构建共享数据存储...
+2026-10-15 15:41:14,792 [INFO] src.train:   数据存储构建完成: 4,820 只股票, 8.6s
+2026-10-15 15:41:14,793 [INFO] src.train:   内存占用 (store后): 1619 MB
+2026-10-15 15:41:14,793 [INFO] src.train:   构建训练/验证/测试子集...
+2026-10-15 15:42:00,156 [INFO] src.train:   样本量: train=3,374,553, val=1,801,817, test=1,057,066
+2026-10-15 15:42:00,170 [INFO] src.train:   模型参数量: 69,251
+2026-10-15 15:48:29,322 [INFO] src.train:     batch 200/281 (71%) | 389s elapsed, ~158s remaining, mem=2968MB
+2026-10-15 15:53:06,606 [INFO] src.train:   Epoch   1/100 | loss=1.0550 | IC=0.0442 | train=554s val=112s | total=666s | mem=2790MB
+2026-10-15 15:53:06,608 [INFO] src.train:     ^ new best IC=0.0442
+2026-10-15 16:00:06,534 [INFO] src.train:     batch 200/281 (71%) | 420s elapsed, ~170s remaining, mem=2815MB
+2026-10-15 16:04:44,620 [INFO] src.train:   Epoch   2/100 | loss=1.0281 | IC=0.0943 | train=589s val=109s | total=1364s | mem=2816MB
+2026-10-15 16:04:44,621 [INFO] src.train:     ^ new best IC=0.0943
+2026-10-15 16:11:48,411 [INFO] src.train:     batch 200/281 (71%) | 424s elapsed, ~172s remaining, mem=2296MB
+2026-10-15 16:16:36,818 [INFO] src.train:   Epoch   3/100 | loss=0.9842 | IC=0.1474 | train=602s val=110s | total=2077s | mem=2210MB
+2026-10-15 16:16:36,818 [INFO] src.train:     ^ new best IC=0.1474
+2026-10-15 16:23:23,017 [INFO] src.train:     batch 200/281 (71%) | 406s elapsed, ~165s remaining, mem=2708MB
+2026-10-15 16:27:39,869 [INFO] src.train:   Epoch   4/100 | loss=0.8763 | IC=0.1637 | train=564s val=99s | total=2740s | mem=2637MB
+2026-10-15 16:27:39,870 [INFO] src.train:     ^ new best IC=0.1637
+2026-10-15 16:34:17,564 [INFO] src.train:     batch 200/281 (71%) | 398s elapsed, ~161s remaining, mem=2724MB
+2026-10-15 16:39:15,701 [INFO] src.train:   Epoch   5/100 | loss=0.6833 | IC=0.1384 | train=577s val=118s | total=3436s | mem=2168MB
+2026-10-15 16:45:59,254 [INFO] src.train:     batch 200/281 (71%) | 404s elapsed, ~163s remaining, mem=2707MB
+2026-10-15 16:50:06,647 [INFO] src.train:   Epoch   6/100 | loss=0.5083 | IC=0.1126 | train=555s val=95s | total=4086s | mem=2468MB
+2026-10-15 16:56:57,332 [INFO] src.train:     batch 200/281 (71%) | 411s elapsed, ~166s remaining, mem=2683MB
+2026-10-15 17:01:28,589 [INFO] src.train:   Epoch   7/100 | loss=0.3850 | IC=0.0896 | train=582s val=100s | total=4768s | mem=2470MB
+2026-10-15 17:07:48,187 [INFO] src.train:     batch 200/281 (71%) | 380s elapsed, ~154s remaining, mem=2449MB
+2026-10-15 17:12:09,371 [INFO] src.train:   Epoch   8/100 | loss=0.3015 | IC=0.0604 | train=531s val=110s | total=5409s | mem=2472MB

@@ -6,14 +6,16 @@
 
 使用与截面选股相同的 **AGRU** 模型（Attention + GRU），通过"个股样本 + 市场标签"的训练方式，使模型具备大盘择时能力。每日将全市场个股预测聚合为三分类择时信号（0=空仓 / 1=半仓 / 2=满仓），实现绝对收益。
 
-**研报目标基线**（中证全指，2020–2025/9，日频调仓，开盘价，单边万五）：
+**研报目标基线**（中证全指，2020–2026/8，日频调仓，开盘价，单边万五）：
 
-| 指标 | 目标值 |
-|---|---|
-| 年化收益率 | 15.86% |
-| 夏普比率 | 1.18 |
-| 最大回撤 | -12.66% |
-| 择时 IC | 15.81% |
+| 指标 | 目标值 | 复现值 |
+|---|---|---|
+| 年化收益率 | 15.86% | — |
+| 夏普比率 | 1.18 | — |
+| 最大回撤 | -12.66% | — |
+| 择时 IC | 15.81% | 10.54% |
+
+> 复现值基于 7 折滚动训练（2020–2026/8）样本外信号计算，IC 口径为 `spearman(score, 次日收益率)`。
 
 ## 环境要求
 
@@ -32,8 +34,8 @@ pip install torch dolphindb pandas numpy scipy scikit-learn pyarrow
 
 | 数据 | DolphinDB 库表 | 说明 |
 |---|---|---|
-| 指数日频行情 | `dfs://d0_day.jy_qt_indexquote` join `jy_secumain` | 中证全指(000985) OHLCV，2010–2025/9 |
-| 预计算因子 | `dfs://d2_day.factors_std` | 260 个因子（alpha158 + cicc + custom），长格式存储，pool=`filtered`，2015–2025 |
+| 指数日频行情 | `dfs://d0_day.jy_qt_indexquote` join `jy_secumain` | 中证全指(000985) OHLCV，2010–2026/8 |
+| 预计算因子 | `dfs://d2_day.factors_std` | 260 个因子（alpha158 + cicc + custom），长格式存储，pool=`filtered`，2015–2026/8 |
 
 **因子覆盖范围**（260 个）：
 - `alpha158_*`：Qlib Alpha158 因子集（kbar/price/rolling/volume/vol_price/reg/updown/rsqr 等）
@@ -47,7 +49,9 @@ pip install torch dolphindb pandas numpy scipy scikit-learn pyarrow
 ```
 agru择时/
 ├── config.py              # 全局配置：DolphinDB连接/模型超参/滚动区间/特征清单/回测参数
-├── run.py                 # 主入口（discover / fetch / run / smoke 四种模式）
+├── run.py                 # 主入口（discover / fetch / preprocess / train / backtest / run / smoke）
+├── extract_stats.py       # 提取标准化统计量和阈值（推理前一次性运行）
+├── run_daily_predict.py   # 每日择时信号预测（实时拉取因子 → 模型推理 → 输出信号）
 ├── 复现框架.md            # 复现框架文档（策略介绍/参数/计划/验收基线）
 ├── README.md              # 本文件
 │
@@ -56,19 +60,28 @@ agru择时/
 │   ├── model.py           # AGRU 模型（Linear→Tanh→GRU→Attn→Mul/Sum/Concat→Linear）
 │   ├── data_loader.py     # DolphinDB 数据接口（指数行情/因子拉取/本地缓存）
 │   ├── features.py        # 特征管理（标准化/清洗）
-│   ├── dataset.py         # 数据集构建（StreamingTimingDataset / 市场标签 / 样本构建）
+│   ├── dataset.py         # 数据集构建（TimingDataStore / 市场标签 / 样本构建）
 │   ├── train.py           # 滚动训练流水线（8+2+1逐年滚动 / 信号聚合 / TSRankIC早停）
 │   ├── backtest.py        # 回测系统（日频调仓 / 开盘价 / 手续费 / IC统计）
 │   └── metrics.py         # 评估指标（TSRankIC / 信号准确性 / 回测指标）
 │
-├── data/                  # 数据缓存（parquet，自动生成）
-│   ├── index_daily.parquet           # 中证全指日频行情（~226KB）
+├── data/                  # 数据缓存（parquet，自动生成，已 gitignore）
+│   ├── index_daily.parquet           # 中证全指日频行情
 │   ├── factors_2015.parquet          # 逐年因子数据（每文件 ~1–2GB）
 │   ├── ...
-│   └── factors_2025.parquet
+│   ├── factors_2026.parquet
+│   └── factors_{year}_slim.parquet   # 精简版（仅40特征，float32，~100–200MB）
 │
-├── checkpoints/           # 模型权重（训练时自动保存）
-├── results/               # 回测结果（signals.csv / daily_result.csv）
+├── checkpoints/           # 模型权重 + 统计量（训练/提取后自动保存）
+│   ├── model_{year}.pt               # 模型权重（7折：2020–2026）
+│   ├── stats_{year}.pkl              # 标准化统计量 + 阈值（推理用）
+│   └── signals_{year}.csv            # 各折测试集信号
+│
+├── results/               # 回测结果 + 每日预测
+│   ├── signals.csv                   # 样本外信号（2020–2026/8，1553天）
+│   ├── daily_predict.csv             # 每日预测结果（追加模式）
+│   ├── daily_result.csv              # 回测逐日净值
+│   └── train_*.log                   # 训练日志
 │
 ├── run_real_test.py       # 真实数据快速测试脚本（子样本+少量epoch）
 ├── scripts_discover*.py   # DolphinDB 数据库探查脚本（开发调试用）
@@ -105,7 +118,17 @@ python run.py fetch
 - 中证全指日频行情 → `data/index_daily.parquet`
 - 预计算因子（260 个，pool=filtered）→ `data/factors_{year}.parquet`（每年约 1–2GB）
 
-已缓存的年份会自动跳过。数据范围：2015–2025/9（因子数据从 2015 年起）。
+已缓存的年份会自动跳过。数据范围：2015–2026/8（因子数据从 2015 年起）。
+
+> **注意**：`fetch_all` 在合并所有年份时可能 OOM（20+ GiB），但各年份 parquet 已保存成功，不影响后续使用。训练时按折单独加载。
+
+### 第 3.5 步：预处理（精简 parquet，加速训练）
+
+```bash
+python run.py preprocess
+```
+
+将每年 parquet 精简为仅 40 个选定特征 + float32，文件从 ~1–2GB 降至 ~100–200MB。训练时优先读取 slim 版本。
 
 ### 第 4 步：快速验证（真实数据子样本，约 4 分钟）
 
@@ -121,9 +144,50 @@ python run_real_test.py
 python run.py run
 ```
 
-全量数据、6 个滚动折、100 epoch（早停 patience=10），输出对标研报的完整回测结果。结果保存到 `results/signals.csv` 和 `results/daily_result.csv`。
+全量数据、7 个滚动折（2020–2026）、100 epoch（早停 patience=10），输出对标研报的完整回测结果。结果保存到 `results/signals.csv` 和 `results/daily_result.csv`。
 
 > **注意**：CPU 环境下完整训练耗时极长（每个滚动折数小时），建议使用 GPU 或先缩减 `config.py` 中的 `ROLLING_YEARS`、`TRAIN["max_epochs"]`、`TRAIN["batch_size"]` 进行调试。
+
+### 第 6 步：每日择时预测
+
+#### 6.1 提取统计量（一次性，每次重训后需重新运行）
+
+```bash
+python extract_stats.py --year 2026
+```
+
+从训练数据重建标准化统计量（mean/std）和验证集 score 分位数阈值（t_low/t_high），保存到 `checkpoints/stats_2026.pkl`。推理时依赖此文件。
+
+#### 6.2 每日预测
+
+```bash
+python run_daily_predict.py                    # 预测今日信号
+python run_daily_predict.py --date 2026-09-01  # 指定预测日期
+python run_daily_predict.py --year 2025        # 指定模型年份
+```
+
+**时序逻辑**：
+
+```
+T日收盘 → DolphinDB因子可用 → 拉取[T-19, T]全市场因子 → 标准化 → 模型推理 → 聚合 → 阈值映射 → 信号
+                                                                                    ↓
+                                                                          T+1开盘前调仓
+```
+
+实时从 DolphinDB 拉取最近 45 天因子数据（无需更新本地 parquet），每只股票构建 20 日特征窗口，模型推理后全市场概率均值聚合为当日 score，按阈值映射为 0/1/2 信号。结果追加到 `results/daily_predict.csv`。
+
+**输出格式**：
+
+| 字段 | 说明 |
+|---|---|
+| date | 预测日期（T+1） |
+| signal | 0=空仓 / 1=半仓 / 2=满仓 |
+| score | 连续择时打分（满仓概率 − 空仓概率的均值） |
+| position | 建议仓位（0.0 / 0.5 / 1.0） |
+| model_year | 使用的模型年份 |
+| n_stocks | 参与预测的股票数 |
+| data_end_date | 因子数据截止日期（T） |
+| predict_time | 预测时间戳 |
 
 ## 核心配置说明
 
@@ -154,10 +218,10 @@ TRAIN = {"batch_size": 12000, "lr": 1e-3, "max_epochs": 100, "patience": 10, "va
 ### 滚动训练区间
 
 ```python
-ROLLING_YEARS = [2020, 2021, 2022, 2023, 2024, 2025]
+ROLLING_YEARS = [2020, 2021, 2022, 2023, 2024, 2025, 2026]
 ```
 
-每年滚动：8 年训练 + 2 年验证 + 1 年测试（因子数据从 2015 年起，前几折训练集不足 8 年时自动截断到 2015）。
+每年滚动：8 年训练 + 2 年验证 + 1 年测试（因子数据从 2015 年起，前几折训练集不足 8 年时自动截断到 2015）。数据截止 2026/8/31。
 
 ### 标签与仓位
 
@@ -202,9 +266,11 @@ Dropout(0.3) → Linear(256→64) → Tanh → Linear(64→3)
 
 ### 评估指标
 
-- **TSRankIC**：每日预测得分与真实收益率的 Spearman 秩相关（研报目标 15.81%）
+- **TSRankIC**：每日预测得分与次日收益率的 Spearman 秩相关（研报目标 15.81%，复现值 10.54%）
 - **信号准确性**：按信号分组统计出现比例、次日收益率均值、胜率（对标研报表 4）
 - **回测指标**：总收益率、年化收益率、年化波动率、夏普比率、最大回撤
+
+> **注意**：`backtest.py` 中 IC 计算有已知 bug——使用了当日收益（`close.pct_change()`）而非次日收益，导致回测输出的 IC 值不正确。正确的 IC 应在 `signals.csv` 的 score 与次日收益率之间计算。
 
 ## 验收基线
 
@@ -238,14 +304,33 @@ Dropout(0.3) → Linear(256→64) → Tanh → Linear(64→3)
 | 沪深 300 | 年化 13.43%，夏普 1.10 |
 | 中证 1000 | 年化 17.51%，夏普 1.02 |
 
+## 训练结果
+
+7 折滚动训练全部完成（2020–2026/8），样本外信号共 1553 天。
+
+| 滚动折 | 训练集 | 验证集 | 测试集 | 验证集 IC | 测试集 IC |
+|---|---|---|---|---|---|
+| 2020 | 2015–2017 | 2018–2019 | 2020 | 0.0796 | 0.1485 |
+| 2021 | 2015–2018 | 2019–2020 | 2021 | 0.1626 | 0.1428 |
+| 2022 | 2015–2019 | 2020–2021 | 2022 | 0.1374 | 0.0753 |
+| 2023 | 2015–2020 | 2021–2022 | 2023 | 0.0950 | 0.1074 |
+| 2024 | 2015–2021 | 2022–2023 | 2024 | 0.0735 | 0.0977 |
+| 2025 | 2015–2022 | 2023–2024 | 2025 | 0.0849 | 0.1302 |
+| 2026 | 2016–2023 | 2024–2025 | 2026 | 0.1037 | 0.0806 |
+
+整体样本外 IC = **10.54%**（研报目标 15.81%）。信号分布：0→515 天（33%），1→643 天（41%），2→395 天（25%），与研报目标比例 32%/42%/26% 基本吻合。
+
 ## 已知问题与待办
 
-- [ ] 因子数据从 2015 年起，研报需 2010 年起，前几折训练集不足 8 年
-- [ ] CPU 训练速度慢，全量训练需 GPU 支持
+- [x] 因子数据从 2015 年起，研报需 2010 年起，前几折训练集不足 8 年（已自动截断到 2015）
+- [x] CPU 训练速度慢（已用 GPU 完成全部 7 折训练）
+- [x] 每日推理脚本（`run_daily_predict.py` + `extract_stats.py` 已实现）
+- [ ] `backtest.py` 的 IC 计算有 bug（用了当日收益而非次日收益），需修复
 - [ ] 仓位规则（0/1/2 → 空/半/满）待波动率校验后定案
 - [ ] 信号聚合规则与阈值方案待调优（当前为概率均值 + 分位数阈值）
 - [ ] 研报第二、三部分（截面 ETF 轮动、叠加策略）暂未复现
 - [ ] Attention 实现细节、Dropout 插入位置需消融验证
+- [ ] 定期重训机制（当前需手动运行 fetch → train → extract_stats）
 
 ## 复现范围
 

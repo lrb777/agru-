@@ -23,7 +23,7 @@ INDEX_INNER_CODE = 14110
 ALT_INDICES = {"000300": 3145, "000852": 39144}
 
 DATA_START = "2010-01-01"
-DATA_END = "2025-09-30"
+DATA_END = "2026-08-31"
 BT_START = "2020-01-01"
 BT_END = "2025-09-30"
 
@@ -62,7 +62,7 @@ TRAIN = {
     "val_metric": "tsrankic",
 }
 
-ROLLING_YEARS = list(range(2020, 2026))
+ROLLING_YEARS = list(range(2020, 2027))
 
 LABEL = {
     "forecast_horizon": 1,

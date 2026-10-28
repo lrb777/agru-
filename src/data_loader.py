@@ -69,7 +69,9 @@ class DolphinDBLoader:
         df = df.sort_values(["code", "date"]).reset_index(drop=True)
         return df
 
-    def fetch_factors_yearly(self, pool: str = FACTOR_POOL, start_year: int = 2010, end_year: int = 2025) -> pd.DataFrame:
+    def fetch_factors_yearly(self, pool: str = FACTOR_POOL, start_year: int = 2015, end_year: int = None) -> pd.DataFrame:
+        if end_year is None:
+            end_year = pd.Timestamp(DATA_END).year
         all_dfs = []
         for yr in range(start_year, end_year + 1):
             cache = os.path.join(DATA_DIR, f"factors_{yr}.parquet")
@@ -78,7 +80,10 @@ class DolphinDBLoader:
                 print(f"  {yr}: cached {len(df):,} rows")
             else:
                 s = f"{yr}-01-01"
-                e = f"{yr}-12-31" if yr < 2025 else "2025-09-30"
+                if yr == end_year:
+                    e = DATA_END
+                else:
+                    e = f"{yr}-12-31"
                 print(f"  {yr}: fetching from DolphinDB...")
                 df = self.fetch_factors_wide(s, e, pool)
                 df.to_parquet(cache, index=False)
